@@ -1,0 +1,138 @@
+print("WELCOME TO THE QUIZ GAME!\n")
+print()
+
+qb = [
+    {
+        "text": "What is Python primarily classified as?",
+        "answer": "C"
+    },
+    {
+        "text": "Which of the following best describes Python’s typing system?",
+        "answer": "B"
+    },
+    {
+        "text": "What is the main purpose of Python’s virtual environment?",
+        "answer": "C"
+    },
+    {
+        "text": "Which concept allows functions to be treated as objects in Python?",
+        "answer": "B"
+    },
+    {
+        "text": "What is the role of the Python interpreter?",
+        "answer": "B"
+    },
+    {
+        "text": "Which of the following is NOT a feature of Python?",
+        "answer": "C"
+    },
+    {
+        "text": "What does 'duck typing' mean in Python?",
+        "answer": "B"
+    },
+    {
+        "text": "Which principle of OOP allows using the same method name with different implementations?",
+        "answer": "C"
+    },
+    {
+        "text": "What is the Global Interpreter Lock (GIL)?",
+        "answer": "B"
+    },
+    {
+        "text": "Which of the following best describes 'list comprehension'?",
+        "answer": "B"
+    }
+]
+
+options=options = [
+    [
+        "A. Low-level language",
+        "B. Compiled language only",
+        "C. High-level interpreted language",
+        "D. Assembly language"
+    ],
+    [
+        "A. Static typing",
+        "B. Dynamic typing",
+        "C. Strong typing only",
+        "D. Weak typing only"
+    ],
+    [
+        "A. Improve speed",
+        "B. Manage multiple Python versions",
+        "C. Isolate project dependencies",
+        "D. Debug code"
+    ],
+    [
+        "A. Encapsulation",
+        "B. First-class functions",
+        "C. Inheritance",
+        "D. Polymorphism"
+    ],
+    [
+        "A. Converts code into machine language before execution",
+        "B. Executes code line by line",
+        "C. Only checks syntax",
+        "D. Compiles code into bytecode only"
+    ],
+    [
+        "A. Platform independence",
+        "B. Automatic memory management",
+        "C. Manual memory allocation required",
+        "D. Extensive standard library"
+    ],
+    [
+        "A. Code must follow strict type rules",
+        "B. Object type is determined by its behavior",
+        "C. Only integers are allowed",
+        "D. Variables must be declared before use"
+    ],
+    [
+        "A. Encapsulation",
+        "B. Abstraction",
+        "C. Polymorphism",
+        "D. Inheritance"
+    ],
+    [
+        "A. A tool for debugging",
+        "B. A lock that allows only one thread to execute Python bytecode at a time",
+        "C. A memory management system",
+        "D. A compiler feature"
+    ],
+    [
+        "A. A way to define classes",
+        "B. A compact way to create lists",
+        "C. A debugging technique",
+        "D. A memory allocation method"
+    ]
+]
+
+score=0
+
+def check(g,a):
+    if g==a:
+        return True
+    else:
+        return False
+
+for qnum in range(len(qb)):
+
+    print(qb[qnum]["text"])
+    for i in options[qnum]:
+        print(i)
+    print("\n")
+
+    guess=input("Enter your answer (A/B/C/D):").upper()
+    crt=check(guess,qb[qnum]["answer"])
+    if crt:
+        print("Correct Answer!")
+        score+=1
+    else:
+        print("Incorect Answer")
+        print("The correct answer is",qb[qnum]["answer"])
+
+    print(f"Your current score is {score}/{qb+1}")
+
+print(f"You have given {score} correct answers")
+
+print(f"Your score is {score/len(qb)*100}%")
