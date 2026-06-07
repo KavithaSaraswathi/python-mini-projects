@@ -1,0 +1,39 @@
+import string
+alpha=list(string.ascii_lowercase)
+
+def encryption(plain_text,shift_key):
+    cipher_text=""
+    for i in plain_text:
+        if i in alpha:
+            pos=alpha.index(i)
+            new_pos=(pos+shift_key)%26
+            cipher_text +=alpha[new_pos]
+        else:
+            cipher_text+=i
+    print("\nThe text after encryption is",cipher_text)
+
+def decryption(cipher_text,shift_key):
+    plain_text=""
+    for i in cipher_text:
+        if i in alpha:
+            pos=alpha.index(i)
+            new_pos=(pos-shift_key)%26
+            plain_text+=alpha[new_pos]
+        else:
+            plain_text+=i
+    print("\nThe text after decryption is",plain_text)
+
+flag=True
+while(flag):
+    to_do=input("\nType 'encrypt' for Encryption, type 'decrypt' for Decryption:")
+    text=input("\nType your meassage:")
+    shift=int(input("Enter shift key:"))
+    if to_do.lower()=="encrypt":
+        encryption(text,shift)
+    elif to_do.lower()=="decrypt":
+        decryption(text,shift)
+
+    play_again=input("\nDo you want to continue(Y/N):")
+    if play_again.upper()=='N':
+        flag=False
+        print("Bye..")
