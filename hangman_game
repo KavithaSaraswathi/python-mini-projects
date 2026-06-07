@@ -1,0 +1,44 @@
+import random
+
+print("HANGMAN GAME")
+
+words=['FRIENDSHIP','CHOCOLATE','SNOWFLAKES','NEWSPAPER','FOOTBALL','CELEBRATION','AFTERNOON','WATERFALL','BLUEBERRIES']
+choice=list(random.choice(words))
+
+word=list('_'*len(choice))
+for i in word:
+    print(i,end="")
+
+chance=5
+guess=[]
+
+print()
+while chance>0:
+    if '_' not in word:
+        print("\nYOU GUESSED IT RIGHT!")
+        break
+    
+    a=input("\nEnter the letter you guess:").upper()
+
+    if a in guess:
+        print("Aldready guessed")
+        continue
+
+    guess.append(a)
+
+    if a in choice:
+        for i in range(len(choice)):
+            if choice[i]==a:
+                word[i]=a
+
+        print("".join(word)) 
+    else:
+        chance-=1;
+        print("Your guess is wrong.",chance,"chance left...")
+
+if chance==0:
+    print("\nGame over! The word is ","".join(word))
+
+        
+
+        
