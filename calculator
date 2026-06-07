@@ -1,0 +1,44 @@
+print("CALCULATOR\n")
+
+def add(a,b):
+    return a+b
+def minus(a,b):
+    return a-b
+def multiply(a,b):
+    return a*b
+def div(a,b):
+    return a/b
+
+op={"add":'+',"subracty":'-',"multiply":'*',"division":'/'}
+
+def calculator():
+    num1=int(input("Enter first number:"))
+    for k,v in op.items():
+        print(f"{k} : {v}")
+    flag=True
+    while flag:
+        opp=input("Enter the operator:")  
+        num2=int(input("Enter the second number:"))
+        if opp=='+':
+            a=add(num1,num2)
+            print(f"{num1} {opp} {num2} = {a}")
+        elif opp=='-':
+            a=minus(num1,num2)
+            print(f"{num1} {opp} {num2} = {a}")
+        elif opp=='*':
+            multiply(num1,num2)
+        elif opp=='/':
+            div(num1,num2)
+        else:
+            print("Invalid operator.")
+        choice=input("Enter 'c' for continuing with last answer, 'n' for new calculation ,'x' for exit: ").lower()
+        if choice=='c':
+            num1=a
+        elif choice=='n':
+            flag=False
+            calculator()
+        elif choice=='x':
+            flag=False
+            print("OVER")
+
+calculator()
