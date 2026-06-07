@@ -1,0 +1,28 @@
+print("Pizza Order!\n")
+
+size=input("Enter size of the pizza(S/M/L):")
+bill=0
+
+if size.upper()=='S':
+    bill+=100
+    print("Price of small pizza is 100Rs")
+elif size.upper()=='M':
+    bill+=200
+    print("Price of small pizza is 100Rs")
+else:
+    bill+=300
+    print("Price of small pizza is 100Rs")
+
+pep=input("Do you want pepperoni(Y/N):")
+if pep.upper()=='Y':
+    if size.upper()=='S':
+        bill+=30
+    else:
+        bill+=50
+
+cheese=input("Do you want extra cheese(Y/N):")
+if cheese.upper()=='Y':
+    bill+=20
+
+print("Your final bill is",bill)
+
