@@ -1,0 +1,28 @@
+import os
+
+print("Silent Auction!")
+
+def winner(dic):
+    high=0
+    win=""
+    for i in dic:
+        price=dic[i]
+        if price>high:
+            high=price
+            win=i
+    print("The winner is",win,"with a bid price of",high)
+
+dic={}
+flag=True
+while flag:
+    name=input("Enter your name:")
+    price=int(input("Enter your bid amount:"))
+    dic[name]=price
+
+    choice=input("Are there more bidders?(Y/N):").lower()
+
+    if choice=='n':
+        flag=False
+        winner(dic)
+    elif choice=='y':
+        os.system('cls')
