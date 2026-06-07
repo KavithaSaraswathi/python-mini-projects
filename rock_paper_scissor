@@ -1,0 +1,55 @@
+import random
+
+print("ROCK PAPER AND SCISSOR")
+print("You have 5 chances...The one to get more points wins ")
+
+tool=['rock','paper','scissor']
+
+user_points=comp_points=0
+
+print("\n")
+
+for i in range(5):
+    pos=random.randint(0,2)
+    choice_user=input("Enter rock/paper/scissor:")
+    choice_computer=tool[pos]
+    print("Computer:",choice_computer)
+    if choice_user.lower()==choice_computer:
+        print("Draw")
+    else:
+        if choice_user.lower()=='rock' and choice_computer=='paper':
+            print("Computer got a point!")
+            comp_points+=1
+        elif choice_user.lower()=='paper' and choice_computer=='rock':
+            print("You got a point!")
+            user_points+=1
+        elif choice_user.lower()=='rock' and choice_computer=='scissor':
+            print("You got a pont!")
+            user_points+=1
+        elif choice_user.lower()=='scissor' and choice_computer=='rock':
+            print("Computer got a point")
+            comp_points+=1
+        elif choice_user.lower()=='scissor' and choice_computer=='paper':
+            print("You got a point")
+            user_points+=1
+        elif choice_user.lower()=='paper' and choice_computer=='scissor':
+            print("Computer got a point")
+            comp_points+=1
+
+    print("\n")
+    
+if comp_points>user_points:
+    print("COMPUTER WON(",comp_points,"points)")
+
+elif comp_points==user_points:
+    print("ITS A DRAW")
+else:
+    print("YOU WON(",user_points,"points)")
+
+
+    
+
+    
+
+
+
