@@ -1,0 +1,101 @@
+menu={
+    "latte":{
+        "ingredients":{
+            "water":200,
+            "milk":150,
+            "coffee":25
+        },
+        "cost":150
+    },
+    "espresso":{
+        "ingredients":{
+            "water":50,
+            "coffee":18
+        },
+        "cost":100
+    },
+    "cappuccino":{
+        "ingredients":{
+            "water":250,
+            "milk":100,
+            "coffee":24
+        },
+        "cost":200
+    }
+}
+
+resources={
+    "water":500,
+    "milk":300,
+    "coffee":150
+}
+
+profit=0
+
+def check(ing):
+    for item in ing:
+        if ing[item]>resources[item]:
+            print(f"Sorry! There is not enough {item}")
+            print()
+            return False
+    return True
+
+def coins():
+    print("Please insert coin.")
+    total=0
+    five=int(input("How many five rupee coins:"))
+    ten=int(input("How many five rupee coins:"))
+    twenty=int(input("How many five rupee coins:"))
+    print()
+
+    total=(five*5)+(ten*10)+(twenty*20)
+    return total
+
+def payment_success(received,cost):
+    global profit
+    if received==cost:
+        profit+=cost
+        return True
+
+    elif received>cost:
+        profit+=cost       
+        change=received-cost
+        print(f"Here is your change Rs{change}")
+        print()
+        return True
+    
+    else:
+        print("Sorry there is not enough money. Money is refunded")
+        print()
+        print()
+        return  False
+
+def make_coffee(name,ingre):
+    for item in ingre:
+        resources[item]-=ingre[item]
+    print(f"Your {choice} is Ready!!")
+    print()
+    print()
+
+is_on=True
+while is_on:
+    choice=input("Enter your choice (latte / espresso / cappuccino / report / off):").lower()
+    print()
+    if choice=="off":
+        is_on=False
+    elif choice=="report":
+        print(f"Water={resources['water']}ml")
+        print(f"Milk={resources['milk']}ml")
+        print(f"Coffee={resources['coffee']}ml")
+        print(f"Money=",profit)
+        print()
+
+    else:
+        typee=menu[choice]
+        if check(typee["ingredients"]):
+            print("The cost of",choice,"is",menu[choice]["cost"])
+            print()
+            payment=coins()
+            if payment_success(payment,typee["cost"]):
+                make_coffee(choice,typee["ingredients"])
+            
